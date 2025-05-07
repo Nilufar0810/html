@@ -2,3 +2,12 @@ h1 {
     color: blue;
     font-size: 72px;
 }
+.c {
+    color: rgb(137, 48, 81);
+    background-color: #4f884c;
+    font-size: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 20px;
+    margin: 5px;
+    border-left: 20px rgb(84, 75, 141) dashed;
+}

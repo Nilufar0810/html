@@ -1,43 +1,70 @@
 h1 {
-    color: blue;
-    font-size: 72px;
+  color: blue;
+  font-size: 72px;
 }
 .c {
-    color: rgb(137, 48, 81);
-    background-color: #4f884c;
-    font-size: 50px;
-    font-family: Arial, Helvetica, sans-serif;
-    border: 20px;
-    margin: 5px;
-    border-left: 20px rgb(84, 75, 141) dashed;
-
+  color: rgb(137, 48, 81);
+  background-color: #4f884c;
+  font-size: 50px;
+  font-family: Arial, Helvetica, sans-serif;
+  border: 20px;
+  margin: 5px;
+  border-left: 20px rgb(84, 75, 141) dashed;
 }
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
-  body {
-    position: relative;
-  }
-  
-  .h_one {
-    color: yellow;
-    font-size: 50px;
-    background-color: rgb(241, 151, 24);
-    margin: 40px;
-    text-align: right;
-    font-size: 50px;
-    border-left: 5px red dashed;
-  }
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  video {
-    width: 400px;
-    height: 300px;
-    border: 2px green solid;
-    margin: 20px;
-    display: inline-block;
+body {
+  position: relative;
+}
+
+.h_one {
+  color: yellow;
+  font-size: 50px;
+  background-color: rgb(241, 151, 24);
+  margin: 40px;
+  text-align: right;
+  font-size: 50px;
+  border-left: 5px red dashed;
+}
+
+video {
+  width: 400px;
+  height: 300px;
+  border: 2px green solid;
+  margin: 20px;
+  display: inline-block;
+}
+@keyframes divtag {
+  0% {
+    background-color: red;
+    transform: translateX(0px) translateY(0px);
   }
-  
- 
+  25% {
+    background-color: yellow;
+    transform: translateX(100px) translateY(0px); /* 100px o'ngga */
+  }
+  50% {
+    background-color: blue;
+    transform: translateX(100px) translateY(100px); /* 100px pastga */
+  }
+  75% {
+    background-color: rgb(255, 111, 0);
+    transform: translateX(0px) translateY(100px); /* 100px chapga */
+  }
+  100% {
+    background-color: green;
+    transform: translateX(0px) translateY(0px); /* 100px yuqoriga */
+  }
+}
+
+.for_animation {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 200px;
+  margin-left: 100px;
+  animation: divtag 4s infinite;
+}

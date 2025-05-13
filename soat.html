@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Raqamli Aylana Soat (Tovush bilan)</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(120deg, #232526, #414345);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .clock {
+      width: 300px;
+      height: 300px;
+      border: 10px solid #00ffcc;
+      border-radius: 50%;
+      position: relative;
+      box-shadow: 0 0 30px #00ffcc;
+    }
+
+    .hand {
+      width: 50%;
+      height: 4px;
+      background: #00ffcc;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform-origin: 100% 50%; /* Markazga joylashgan */
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .hour {
+      height: 6px;
+      background: #ff00cc;
+    }
+
+    .minute {
+      height: 4px;
+      background: #00ffcc;
+    }
+
+    .second {
+      height: 2px;
+      background: #ffffff;
+    }
+
+    .center-dot {
+      width: 12px;
+      height: 12px;
+      background: white;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 10px white;
+    }
+
+    .number {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      text-align: center;
+      line-height: 30px;
+      color: white;
+      font-weight: bold;
+      transform: translate(-50%, -50%);
+    }
+  </style>
+</head>
+<body>
+  <div class="clock" id="clock">
+    <div class="hand hour" id="hour"></div>
+    <div class="hand minute" id="minute"></div>
+    <div class="hand second" id="second"></div>
+    <div class="center-dot"></div>
+  </div>
+
+  <!-- Sekund tovushi -->
+  <audio id="tick-tock" src="https://www.soundjay.com/button/beep-07.wav" preload="auto"></audio>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const seconds = now.getSeconds();
+      const minutes = now.getMinutes();
+      const hours = now.getHours();
+
+      const secondDeg = seconds * 6;
+      const minuteDeg = minutes * 6 + seconds * 0.1;
+      const hourDeg = ((hours % 12) + minutes / 60) * 30;
+
+      document.getElementById("second").style.transform = `rotate(${secondDeg}deg)`;
+      document.getElementById("minute").style.transform = `rotate(${minuteDeg}deg)`;
+      document.getElementById("hour").style.transform = `rotate(${hourDeg}deg)`;
+
+      // Sekund tovushi
+      document.getElementById("tick-tock").play();
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // Raqamlar joylashuvi
+    const clock = document.getElementById('clock');
+    for (let i = 1; i <= 12; i++) {
+      const angle = (i * 30) * (Math.PI / 180); // 360/12 = 30
+      const radius = 130;
+      const x = 150 + radius * Math.sin(angle); // markaz x=150
+      const y = 150 - radius * Math.cos(angle); // markaz y=150
+
+      const number = document.createElement('div');
+      number.className = 'number';
+      number.style.left = `${x}px`;
+      number.style.top = `${y}px`;
+      number.textContent = i;
+      clock.appendChild(number);
+    }
+  </script>
+</body>
+</html>
